@@ -73,10 +73,11 @@
 
 # Case - Netflix fake recommendations app
 
-Try to uderstand why serie Anita is recommended to every one!?!?!
+Try to uderstand why serie "Vai Anita" is recommended to every one!?!?!
 
 https://github.com/fabioperrella/fake-netflix-recommendations
 
 !SLIDE center
 
 # Understanding the code execution order to understand the "step in" command
+
