@@ -79,22 +79,25 @@ https://github.com/fabioperrella/fake-netflix-recommendations
 
 !SLIDE center
 
-# Understanding the code flow of execution to understand the "step in" command
+# Understanding the flow of execution to understand the "step in" command
 
 !SLIDE smallbullets
 
 # Byebug commands
 
-- next
-- step
-- finish
+- next (n)
+- step (s)
+- finish (f)
 - up
-- down
-- backtrace
+- down (d)
+- backtrace (bt)
+- frame
 
 !SLIDE
 
 # Example
+
+## Using byebug commands to help debugging
 
     @@@ ruby
     # example1.rb
@@ -112,4 +115,48 @@ https://github.com/fabioperrella/fake-netflix-recommendations
     binding.pry
     if add_two(2) > 1 && add_four(2) != 2
       puts(add_four(add_two(3) + add_four(8)))
+    end
+
+!SLIDE
+
+# Example in real life
+
+Using `up`, `down` and `frame` to understand what happened before it gets in
+the breakpoint.
+
+    @@@ ruby
+    # PM/lib/recipes_manager/client.rb:6
+    class Client
+      def post_bundle(bundle)
+        binding.pry
+        response = http.post('bundles', bundle.as_json)
+
+        return response.body if response.success?
+
+        # ....
+      end
+    end
+
+!SLIDE
+
+# Example in real life (pt 2)
+
+Using `step`, `finish`, `next`, `break`, `continue`, `play`, and `edit` to
+deep down in the code.
+
+    @@@ ruby
+    # PM/app/services/bundle_service.rb:25
+    def create(raw_bundle)
+      binding.pry
+      result = build_bundle(raw_bundle)
+      return result if result.value.unnecessary?
+
+      Validation.adequate_transaction do
+        result.on_success(post_build_validator)
+          .on_success(Bundle::Validator::PendingBundle)
+          .on_success { |bundle| bundle.tap(&:save!) }
+          .on_success(post_creation_validator)
+          .on_success(send_to_recipes_manager(add_plan_recipe: false))
+          .on_success(clear_transient_configurations)
+      end
     end
