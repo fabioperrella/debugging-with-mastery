@@ -6,7 +6,7 @@
 
 !SLIDE center
 
-# Help others to lose less time debugging like I used to
+# Try to help others to lose less time debugging like I used to lose
 
 !SLIDE center
 
@@ -22,10 +22,10 @@
 
 # Tools
 
-- Pry
+- pry
   + code inspection
   + beautiful console
-- Pry-debugger
+- pry-debugger
   + old debugger (before ruby 2.0.0)
 - byebug
   + "new" debugger (after ruby 2.0.0)
@@ -56,7 +56,7 @@
 
 !SLIDE smallbullets
 
-# Snippets (using sublimetext)
+# Snippets (using Sublime Text)
 
 * bp (binding.pry)
   + https://github.com/fabioperrella/dotfiles/blob/master/sublime/pry.sublime-snippet
@@ -79,7 +79,52 @@ https://github.com/fabioperrella/fake-netflix-recommendations
 
 !SLIDE center
 
-# Understanding the flow of execution to understand the "step in" command
+# Understanding the flow of execution to understand the `step(in)` command
+
+!SLIDE center
+
+# Show me the code!
+
+!SLIDE
+
+# Code execution tree
+
+    @@@ text
+    UserRecommendations.list
+    ├── UserRecommendations#list
+    │   ├── fetchers
+    │   ├── sort_by
+    │   │   ├── ItemsFetcher::Main.order
+    │   │   ├── ItemsFetcher::Secondary.order
+    │   │   ├── ItemsFetcher::Sponsored.order
+    │   ├── map
+    │   │   ├── ItemsFetcher::Main.fetch
+    │   │   │   ├── ItemsFetcher::Main#fetch
+    │   │   │   │   ├── ItemsFetcher::Main#main_preferences
+    │   │   ├── ItemsFetcher::Secondary.fetch
+    │   │   │   ├── ItemsFetcher::Secondary#fetch
+    │   │   │   │   ├── ItemsFetcher::Secondary#secondary_preferences
+    │   │   ├── ItemsFetcher::Sponsored.fetch
+    │   │   │   ├── ItemsFetcher::Sponsored#fetch
+    │   │   │   │   ├── ItemsFetcher::Sponsored#fetch
+    │   │   │   │   │   ├── each
+    │   │   │   │   │   │   ├── SponsoredMetrics.new
+    │   │   │   │   │   │   │   ├── SponsoredMetrics#save
+    │   │   │   │   │   │   │   │   ├── SponsoredMetrics#key
+    │   │   │   │   │   │   │   │   ├── SponsoredMetrics#value
+    │   │   │   │   │   │   │   │   ├── Metrics.save
+    │   │   │   │   │   │   │   │   │   ├── Rails.cache.save
+    │   ├── inject
+    │   ├── reject
+    │   │   ├── UserRecommendations#watched_items
+
+!SLIDE
+
+# Suggestion
+
+Build a gem to build this tree automatically!
+
+I used the gem `tty-tree` to build it manually
 
 !SLIDE smallbullets
 
@@ -141,8 +186,8 @@ the breakpoint.
 
 # Example in real life (pt 2)
 
-Using `step`, `finish`, `next`, `break`, `continue`, `play`, and `edit` to
-deep down in the code.
+Using `step`, `finish`, `next`, `break`, `continue`, `whereami`, `play`, and
+`edit` to deep down in the code.
 
     @@@ ruby
     # PM/app/services/bundle_service.rb:25
@@ -160,3 +205,13 @@ deep down in the code.
           .on_success(clear_transient_configurations)
       end
     end
+
+Unfortunately, there is no `step-back` command :(
+
+!SLIDE
+
+# Using pry commands to navigate around state
+
+* `cd`
+* `nesting`
+* `ls`
