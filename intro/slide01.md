@@ -47,13 +47,6 @@
 
     Pry.config.editor = "vim"
 
-    begin
-      require 'awesome_print'
-      Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
-    rescue LoadError => err
-     puts "no awesome_print :("
-    end
-
 !SLIDE smallbullets
 
 # Snippets (using Sublime Text)
@@ -79,11 +72,11 @@ https://github.com/fabioperrella/fake-netflix-recommendations
 
 !SLIDE center
 
-# Understanding the flow of execution to understand the `step(in)` command
+# Show me the code!
 
 !SLIDE center
 
-# Show me the code!
+# Understanding the flow of execution to understand the `step(in)` command
 
 !SLIDE
 
@@ -126,45 +119,25 @@ Build a gem to build this tree automatically!
 
 I used the gem `tty-tree` to build it manually
 
-!SLIDE smallbullets
+!SLIDE
 
-# Byebug commands
+# Deep down in the code with byebug
 
-- next (n)
-- step (s)
-- finish (f)
-- up
-- down (d)
-- backtrace (bt)
-- frame
+* Add a `binding.pry` in NETFLIX/app/services/user_recommendations.rb:3
+* Run test `spec/services/user_recommendations_spec.rb:49`
+* Use `play -l` to execute some block of code
+* Use `step` to deep down
+* Unfortunately, there is no `step-back` command :(
+* Use `next` to execute the line and go to the next line
+* Use `finish` to current frame until the end
+* Use `up` and `down` to know where in the stack I am, and inspect some variable
+in another frame
+* Use `backtrace`, `frame` and `frame(n)` to show and change the current frame
+* Use `whereami` to show where the debugger is
 
 !SLIDE
 
-# Example
-
-## Using byebug commands to help debugging
-
-    @@@ ruby
-    # example1.rb
-    require 'pry-byebug'
-
-    def add_two(number)
-      # binding.pry # try here to show up, down
-      number + 2
-    end
-
-    def add_four(number)
-      number + 4
-    end
-
-    binding.pry
-    if add_two(2) > 1 && add_four(2) != 2
-      puts(add_four(add_two(3) + add_four(8)))
-    end
-
-!SLIDE
-
-# Example in real life
+# Another example in real life
 
 Using `up`, `down` and `frame` to understand what happened before it gets in
 the breakpoint.
@@ -184,34 +157,17 @@ the breakpoint.
 
 !SLIDE
 
-# Example in real life (pt 2)
+# Editing the current code inside a debug session
 
-Using `step`, `finish`, `next`, `break`, `continue`, `whereami`, `play`, and
-`edit` to deep down in the code.
-
-    @@@ ruby
-    # PM/app/services/bundle_service.rb:25
-    def create(raw_bundle)
-      binding.pry
-      result = build_bundle(raw_bundle)
-      return result if result.value.unnecessary?
-
-      Validation.adequate_transaction do
-        result.on_success(post_build_validator)
-          .on_success(Bundle::Validator::PendingBundle)
-          .on_success { |bundle| bundle.tap(&:save!) }
-          .on_success(post_creation_validator)
-          .on_success(send_to_recipes_manager(add_plan_recipe: false))
-          .on_success(clear_transient_configurations)
-      end
-    end
-
-Unfortunately, there is no `step-back` command :(
+* Add a `binding-pry`
+* Run all tests
+* Use command `edit -c` (current file) to remove the `binding.pry` and continue
 
 !SLIDE
 
 # Using pry commands to navigate around state
 
+*
 * `cd`
 * `nesting`
 * `ls`
