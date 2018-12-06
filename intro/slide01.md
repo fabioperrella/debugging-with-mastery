@@ -6,13 +6,13 @@
 
 !SLIDE center
 
-# Try to help others to lose less time debugging like I used to lose
+# Help others to lose less time debugging like I used to lose
 
 !SLIDE center
 
 # Idea
 
-## Try to show how I used to do and what I've learnt
+## Show how I used to do and what I've learnt
 
 !SLIDE center
 
@@ -66,7 +66,7 @@
 
 # Case - Netflix fake recommendations app
 
-Try to uderstand why serie "Vai Anita" is recommended to every one!?!?!
+Uderstand why serie "Vai Anita" is recommended to everyone!?!?!
 
 https://github.com/fabioperrella/fake-netflix-recommendations
 
@@ -119,6 +119,23 @@ Build a gem to build this tree automatically!
 
 I used the gem `tty-tree` to build it manually
 
+    @@@ ruby
+    require 'tty-tree'
+
+    tree = TTY::Tree.new do
+      node 'UserRecommendations.list' do
+        node 'UserRecommendations#list' do
+          node 'fetchers'
+          node 'sort_by' do
+            node 'ItemsFetcher::Main.order' do
+            end
+            node 'ItemsFetcher::Secondary.order' do
+            end
+            node 'ItemsFetcher::Sponsored.order' do
+            end
+          end
+    ...
+
 !SLIDE
 
 # Deep down in the code with byebug
@@ -127,12 +144,12 @@ I used the gem `tty-tree` to build it manually
 * Run test `spec/services/user_recommendations_spec.rb:49`
 * Use `play -l` to execute some block of code
 * Use `step` to deep down
-* Unfortunately, there is no `step-back` command :(
-* Use `next` to execute the line and go to the next line
+  * Unfortunately, there is no `step-back` command :(
 * Use `finish` to current frame until the end
 * Use `up` and `down` to know where in the stack I am, and inspect some variable
-in another frame
+* Use `next` to execute the line and go to the next line
 * Use `backtrace`, `frame` and `frame(n)` to show and change the current frame
+in another frame
 * Use `whereami` to show where the debugger is
 
 !SLIDE
@@ -157,17 +174,28 @@ the breakpoint.
 
 !SLIDE
 
-# Editing the current code inside a debug session
+# When you forgot a `binding.pry` and run all tests...
 
-* Add a `binding-pry`
-* Run all tests
 * Use command `edit -c` (current file) to remove the `binding.pry` and continue
 
 !SLIDE
 
-# Using pry commands to navigate around state
+# Using `pry` to browse source code regardless of a debug session
 
-*
-* `cd`
-* `nesting`
-* `ls`
+* when debugging, the `pry` tools are available (with `pry-byebug`), but when
+only in `pry` console, the debug commands are not available
+* Use `rails c` to enter the console
+* Use `cd` to inspect a class or instance
+* Use `nesting` to show where I am
+* Use `ls` to show the methods and variables
+* Use `show-source` (or `$`) to show the current source
+* Use `show-source` to show the source of some method
+
+!SLIDE
+
+# How to exit from a pry console correctly
+
+* When using `ctrl+c`, it always crashes the terminal
+  * Use command `reset` to restore the terminal
+* When using `exit`, it exits only the current context
+* When uusing `exit!`, it exists the session, no matter where you ares
