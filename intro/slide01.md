@@ -66,7 +66,7 @@
 
 # Case - Netflix fake recommendations app
 
-Uderstand why serie "Vai Anita" is recommended to everyone!?!?!
+Uderstanding why serie "Vai Anita" is recommended to everybody!?!?!
 
 https://github.com/fabioperrella/fake-netflix-recommendations
 
@@ -152,9 +152,17 @@ I used the gem `tty-tree` to build it manually
 in another frame
 * Use `whereami` to show where the debugger is
 
+!SLIDE center
+
+# STEP / UP / DOWN
+
+### If you have only 1 slot to learn something from this talk, save this!
+
 !SLIDE
 
 # Another example in real life
+
+![](../_images/how_to_use_up.png)
 
 Using `up`, `down` and `frame` to understand what happened before it gets in
 the breakpoint.
@@ -174,9 +182,36 @@ the breakpoint.
 
 !SLIDE
 
+# To help using the `play` command
+
+Good code:
+
+    @@@ ruby
+    fetchers
+      .sort_by(&:order)
+      .map{ |fetcher| fetcher.fetch(user) }
+      .inject(:+)
+      .reject { |item| watched_items.include?(item) }
+
+    # play -l 1..2
+    # play -l 1..3
+    # play -l 1..4
+
+Bad code:
+
+    @@@ ruby
+    fetchers.sort_by(&:order).map{ |fetcher| fetcher.fetch(user) }.inject(:+).reject { |item| watched_items.include?(item) }
+
+    # play -l 1 :(
+
+!SLIDE
+
 # When you forgot a `binding.pry` and run all tests...
 
-* Use command `edit -c` (current file) to remove the `binding.pry` and continue
+* Use command `edit -c` to edit the current file (`Pry.config.editor` must be configured)
+* Remove the `binding.pry`
+* Save and close the file
+* Continue the execution of the tests!
 
 !SLIDE
 
@@ -195,7 +230,7 @@ only in `pry` console, the debug commands are not available
 
 # How to exit from a pry console correctly
 
-* When using `ctrl+c`, it always crashes the terminal
+* When using `ctrl+c`, it always **CRASHES THE TERMINAL !!**
   * Use command `reset` to restore the terminal
 * When using `exit`, it exits only the current context
-* When uusing `exit!`, it exists the session, no matter where you ares
+* When uusing `exit!`, it exists the console, no matter where you are
