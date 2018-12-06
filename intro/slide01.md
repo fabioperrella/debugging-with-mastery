@@ -234,3 +234,33 @@ only in `pry` console, the debug commands are not available
   * Use command `reset` to restore the terminal
 * When using `exit`, it exits only the current context
 * When uusing `exit!`, it exists the console, no matter where you are
+
+!SLIDE
+
+# To avoid printing a lot of stuff to stdout
+
+Without `;` in the end
+
+    @@@ ruby
+    [11] pry(main)> conn = ActiveRecord::Base.connection
+    => #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000055e01c45ee60
+     @active=true,
+     @config={:adapter=>"sqlite3", :pool=>5, :timeout=>5000, :database=>"/home/fabio/workspace/fake-netflix-recommendations/db/development.sqlite3"},
+     @connection=
+      #<SQLite3::Database:0x000055e01c45f0b8
+       @authorizer=nil,
+       @busy_handler=nil,
+       @collations={},
+       @encoding=#<Encoding:UTF-8>,
+       @functions={},
+       @readonly=false,
+       @results_as_hash=true,
+    #...
+
+With `;` in the end
+
+    @@@ ruby
+    [12] pry(main)> conn = ActiveRecord::Base.connection;
+    [13] pry(main)> conn.class
+    => ActiveRecord::ConnectionAdapters::SQLite3Adapter
+
