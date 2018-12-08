@@ -70,6 +70,8 @@ Uderstanding why serie "Vai Anita" is recommended to everybody!?!?!
 
 https://github.com/fabioperrella/fake-netflix-recommendations
 
+**Warning**: This is a crazy app, just to show some debugging scenarios!
+
 !SLIDE center
 
 # Show me the code!
@@ -182,7 +184,7 @@ the breakpoint.
 
 !SLIDE
 
-# To help using the `play` command
+# Using the `play` command to help
 
 Good code:
 
@@ -203,6 +205,52 @@ Bad code:
     fetchers.sort_by(&:order).map{ |fetcher| fetcher.fetch(user) }.inject(:+).reject { |item| watched_items.include?(item) }
 
     # play -l 1 :(
+
+!SLIDE
+
+# Debugging a code inside a block
+
+    @@@ruby
+    # app/services/item_remover.rb
+    def remove(item)
+      binding.pry
+      ActiveRecord::Base.transaction do
+        UserItemLog.where(item: item).destroy_all
+        item.destroy
+      end
+    end
+
+- Avoid using `step` to go into the block
+- Use `break [LINE]` and `continue` for the win!
+
+!SLIDE
+
+# Debugging a code inside a loop
+
+    @@@ ruby
+    # app/services/create_preference.rb
+    def create(name, items)
+      binding.pry
+      ActiveRecord::Base.transaction do
+        items.each do |item|
+          item.preferences << name
+
+          item.user_item_logs.each do |item_log|
+            user = item_log.user
+            unless user.preferences.include?(name)
+              user.preferences << name
+              user.save!
+            end
+          end
+
+          item.save!
+        end
+      end
+    end
+
+- Use `break 10 if user.id == x` to not stop in each element
+- Use `break` to list breakpoints
+- Use `break --delete x` to delete a breakpoint
 
 !SLIDE
 
