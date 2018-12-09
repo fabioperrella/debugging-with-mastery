@@ -276,15 +276,6 @@ only in `pry` console, the debug commands are not available
 
 !SLIDE
 
-# How to exit from a pry console correctly
-
-* When using `ctrl+c`, it always **CRASHES THE TERMINAL !!**
-  * Use command `reset` to restore the terminal
-* When using `exit`, it exits only the current context
-* When uusing `exit!`, it exists the console, no matter where you are
-
-!SLIDE
-
 # To avoid printing a lot of stuff to stdout
 
 Without `;` in the end
@@ -312,3 +303,28 @@ With `;` in the end
     [13] pry(main)> conn.class
     => ActiveRecord::ConnectionAdapters::SQLite3Adapter
 
+!SLIDE
+
+# Pry input buffer
+
+Given the code bellow
+
+    @@@ ruby
+    pry(main)> def do_something
+    pry(main)*   if x == 1
+    pry(main)*     puts 'sim'
+    pry(main)*   else
+
+- Use command `edit` to edit the input buffer
+- Use command `show-input` to show
+- Use command `edit` to edit
+- Use `!` to clear
+
+!SLIDE
+
+# How to exit from a pry console correctly
+
+* When using `ctrl+c`, it always **CRASHES THE TERMINAL !!**
+  * Use command `reset` to restore the terminal
+* When using `exit`, it exits only the current context
+* When uusing `exit!`, it exists the console, no matter where you are
