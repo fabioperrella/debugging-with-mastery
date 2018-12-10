@@ -14,7 +14,7 @@
 
 # Idea
 
-## Show how I used to do and what I've learnt
+## Show how I used to do and what I've learned
 
 !SLIDE center
 
@@ -68,7 +68,7 @@
 
 # Case - Netflix fake recommendations app
 
-Uderstanding why serie "Vai Anita" is recommended to everybody!?!?!
+Understanding why the show "Vai Anita" is recommended to everybody!?!?!
 
 https://github.com/fabioperrella/fake-netflix-recommendations
 
@@ -149,7 +149,7 @@ I used the gem `tty-tree` to build it manually
 * Use `play -l` to execute some block of code
 * Use `step` to deep down
   * Unfortunately, there is no `step-back` command :(
-* Use `finish` to current frame until the end
+* Use `finish` to run the current frame until the end
 * Use `up` and `down` to know where in the stack I am, and inspect some variable
 * Use `next` to execute the line and go to the next line
 * Use `backtrace`, `frame` and `frame(n)` to show and change the current frame
@@ -385,7 +385,7 @@ And it is possible to find where it was raised with `cat --ex`:
 
 # Pry input buffer
 
-Given the code bellow
+Given the code below
 
     @@@ ruby
     pry(main)> def do_something
@@ -416,9 +416,9 @@ Use `.` (dot) and a command, example:
 # How to exit from a pry console correctly
 
 * When using `ctrl+c`, it always **CRASHES THE TERMINAL !!**
-  * Use command `reset` to restore the terminal
+  * Use the command `reset` to restore the terminal
 * When using `exit`, it exits only the current context
-* When uusing `exit!`, it exists the console, no matter where you are
+* When using `exit!`, it exists the console, no matter where you are
 
 !SLIDE center
 
