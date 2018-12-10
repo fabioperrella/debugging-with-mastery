@@ -156,7 +156,7 @@ in another frame
 
 !SLIDE center
 
-# STEP / UP / DOWN
+# STEP / UP / DOWN / FINISH
 
 ### If you have only 1 slot to learn something from this talk, save this!
 
@@ -271,8 +271,42 @@ only in `pry` console, the debug commands are not available
 * Use `cd` to inspect a class or instance
 * Use `nesting` to show where I am
 * Use `ls` to show the methods and variables
+* Use `ls --grep XX` to filter the result of `ls`
 * Use `show-source` (or `$`) to show the current source
 * Use `show-source` to show the source of some method
+
+!SLIDE
+
+# Using show-doc to show the docs
+
+Use `show-doc` do show the docs (requires gem `pry-doc`):
+
+    @@@ruby
+    [2] pry> show-doc Array#all?
+
+    From: enum.c (C Method):
+    Owner: Enumerable
+    Visibility: public
+    Signature: all?(*arg1)
+    Number of lines: 16
+
+    Passes each element of the collection to the given block. The method
+    returns true if the block never returns
+    false or nil. If the block is not given,
+    Ruby adds an implicit block of { |obj| obj } which will
+    cause #all? to return true when none of the collection members are
+    false or nil.
+
+    If instead a pattern is supplied, the method returns whether
+    pattern === element for every collection member.
+
+       %w[ant bear cat].all? { |word| word.length >= 3 } #=> true
+       %w[ant bear cat].all? { |word| word.length >= 4 } #=> false
+       %w[ant bear cat].all?(/t/)                        #=> false
+       [1, 2i, 3.14].all?(Numeric)                       #=> true
+       [nil, true, 99].all?                              #=> false
+       [].all?                                           #=> true
+
 
 !SLIDE
 
@@ -305,6 +339,44 @@ With `;` in the end
 
 !SLIDE
 
+# Catching the last exception with `_ex_`
+
+    @@@ruby
+    [1] pry> 1/0
+    ZeroDivisionError: divided by 0
+    from (pry):1:in `/`
+    [2] pry> _ex_
+    => #<ZeroDivisionError: divided by 0>
+
+And it is possible to find where it was raised:
+
+    @@@ruby
+    [3] pry> cat --ex
+
+    Exception: ZeroDivisionError: divided by 0
+    --
+    From: (pry) @ line 5 @ level: 0 of backtrace (of 82).
+
+        1: 1/0
+        2: _ex_
+        3: Item.new
+        4: aa = _
+     => 5: 1/0
+        6: _ex_
+
+
+!SLIDE
+
+# Getting the last result with `_`
+
+    @@@ruby
+    [1] pry> Item.new
+    => #<Item:0x00005578e8d1dba0 id: nil, name: nil, #...
+    [2] pry> item = _
+    => #<Item:0x00005578e8d1dba0 id: nil, name: nil, #...
+
+!SLIDE
+
 # Pry input buffer
 
 Given the code bellow
@@ -322,9 +394,40 @@ Given the code bellow
 
 !SLIDE
 
+# Executing shell commands
+
+Use `.` (dot) and a command, example:
+
+    @@@ruby
+    pry> .ruby -v
+    ruby 2.5.3p105 (2018-10-18 revision 65156) [x86_64-linux]
+
+    pry> .pwd
+    /home/fabio/workspace/fake-netflix-recommendations
+
+!SLIDE
+
 # How to exit from a pry console correctly
 
 * When using `ctrl+c`, it always **CRASHES THE TERMINAL !!**
   * Use command `reset` to restore the terminal
 * When using `exit`, it exits only the current context
 * When uusing `exit!`, it exists the console, no matter where you are
+
+!SLIDE center
+
+# Finish him!
+
+This presentation: https://github.com/fabioperrella/debugging-with-mastery
+
+Made with the gem **Showoff**: https://github.com/puppetlabs/showoff
+
+**Questions**??
+
+Fabio Perrella
+
+https://github.com/fabioperrella
+
+http://twitter.com/fabioperrella
+
+https://www.locaweb.com.br/carreira
