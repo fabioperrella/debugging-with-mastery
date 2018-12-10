@@ -263,6 +263,10 @@ Bad code:
 * Save and close the file
 * Continue the execution of the tests!
 
+!SLIDE center
+
+# Now, some `pry` stuff...
+
 !SLIDE
 
 # Using `pry` to browse source code regardless of a debug session
@@ -350,7 +354,7 @@ With `;` in the end
     [2] pry> _ex_
     => #<ZeroDivisionError: divided by 0>
 
-And it is possible to find where it was raised:
+And it is possible to find where it was raised with `cat --ex`:
 
     @@@ruby
     [3] pry> cat --ex
