@@ -4,6 +4,8 @@
 
 ## Fabio Perrella
 
+### Tech Leader @ Locaweb
+
 !SLIDE center
 
 # Help others to lose less time debugging like I used to lose
@@ -418,11 +420,15 @@ Use `.` (dot) and a command, example:
 
 # Finish him!
 
-This presentation: https://github.com/fabioperrella/debugging-with-mastery
+## Pics
 
-Made with the gem **Showoff**: https://github.com/puppetlabs/showoff
+The source of this presentation: https://github.com/fabioperrella/debugging-with-mastery
 
-**Questions**??
+This presentation was made with the gem **Showoff**: https://github.com/puppetlabs/showoff
+
+How to find a subject to do a presentation: http://www.greaterthancode.com/2016/11/21/008-sandi-metz-and-katrina-owen/
+
+## Questions ??
 
 Fabio Perrella
 
