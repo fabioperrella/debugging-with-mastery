@@ -481,19 +481,21 @@ Pry.config.editor = "vim"</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide018" class="slide center subsection" data-transition="none">
-<div class="content center subsection" ref="intro/slide01:8">
+<div data-section="intro" data-title="slide01" id="intro_slide018" class="slide" data-transition="none">
+<div class="content " ref="intro/slide01:8">
 <h1>Problem</h1>
 
 <h2>Taking control of the debugger!</h2>
+
+<p><img src="./file//_images/dog_leash.gif" alt=""></p>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide019" class="slide smallbullets center" data-transition="none">
-<div class="content smallbullets center" ref="intro/slide01:9">
-<h1>Case - Netflix fake recommendations app</h1>
+<div data-section="intro" data-title="slide01" id="intro_slide019" class="slide" data-transition="none">
+<div class="content " ref="intro/slide01:9">
+<h1>Netflix fake recommendations app</h1>
 
-<p>Understanding why the show "Vai Anita" is recommended to everybody!?!?!</p>
+<p>Understand why the show "Vai Anita" is recommended to everybody!?!?!</p>
 
 <p><a href="https://github.com/fabioperrella/fake-netflix-recommendations" target="_blank">https://github.com/fabioperrella/fake-netflix-recommendations</a></p>
 
@@ -513,8 +515,8 @@ Pry.config.editor = "vim"</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide0112" class="slide" data-transition="none">
-<div class="content " ref="intro/slide01:12">
+<div data-section="intro" data-title="slide01" id="intro_slide0112" class="slide smaller" data-transition="none">
+<div class="content smaller" ref="intro/slide01:12">
 <h1>Code execution tree</h1>
 
 <pre class="highlight"><code class="language-text">UserRecommendations.list
@@ -577,8 +579,9 @@ tree = TTY::Tree.new do
 <div class="content " ref="intro/slide01:14">
 <h1>Deep down in the code with byebug</h1>
 
-<ul>
-<li>Add a <code>binding.pry</code> in NETFLIX/app/services/user_recommendations.rb:3</li>
+<ol>
+<li>Add a <code>binding.pry</code> in <code>NETFLIX/app/services/user_recommendations.rb:3</code>
+</li>
 <li>Run test <code>spec/services/user_recommendations_spec.rb:49</code>
 </li>
 <li>Use <code>play -l</code> to execute some block of code</li>
@@ -594,7 +597,7 @@ tree = TTY::Tree.new do
 <li>Use <code>backtrace</code>, <code>frame</code> and <code>frame(n)</code> to show and change the current frame
 in another frame</li>
 <li>Use <code>whereami</code> to show where the debugger is</li>
-</ul>
+</ol>
 </div>
 <canvas class="annotations"></canvas>
 </div>
@@ -606,8 +609,8 @@ in another frame</li>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide0116" class="slide" data-transition="none">
-<div class="content " ref="intro/slide01:16">
+<div data-section="intro" data-title="slide01" id="intro_slide0116" class="slide small" data-transition="none">
+<div class="content small" ref="intro/slide01:16">
 <h1>Another example in real life</h1>
 
 <p><img src="./file//_images/how_to_use_up.png" alt=""></p>
@@ -631,9 +634,9 @@ end</code></pre>
 </div>
 <div data-section="intro" data-title="slide01" id="intro_slide0117" class="slide" data-transition="none">
 <div class="content " ref="intro/slide01:17">
-<h1>Using the <code>play</code> command to help</h1>
+<h1>Using the <code>play</code> command to run lines</h1>
 
-<p>Good code:</p>
+<p>Good code (to play):</p>
 
 <pre class="highlight"><code class="language-ruby">fetchers
   .sort_by(&amp;:order)
@@ -645,7 +648,7 @@ end</code></pre>
 # play -l 1..3
 # play -l 1..4</code></pre>
 
-<p>Bad code:</p>
+<p>Bad code (to play):</p>
 
 <pre class="highlight"><code class="language-ruby">fetchers.sort_by(&amp;:order).map{ |fetcher| fetcher.fetch(user) }.inject(:+).reject { |item| watched_items.include?(item) }
 
@@ -673,8 +676,8 @@ end</code></pre>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide0119" class="slide" data-transition="none">
-<div class="content " ref="intro/slide01:19">
+<div data-section="intro" data-title="slide01" id="intro_slide0119" class="slide smaller" data-transition="none">
+<div class="content smaller" ref="intro/slide01:19">
 <h1>Debugging a code inside a loop</h1>
 
 <pre class="highlight"><code class="language-ruby"># app/services/create_preference.rb
@@ -729,7 +732,7 @@ end</code></pre>
 <div class="content " ref="intro/slide01:22">
 <h1>Using <code>pry</code> to browse source code regardless of a debug session</h1>
 
-<ul>
+<ol>
 <li>when debugging, the <code>pry</code> tools are available (with <code>pry-byebug</code>), but when
 only in <code>pry</code> console, the debug commands are not available</li>
 <li>Use <code>rails c</code> to enter the console</li>
@@ -740,12 +743,12 @@ only in <code>pry</code> console, the debug commands are not available</li>
 </li>
 <li>Use <code>show-source</code> (or <code>$</code>) to show the current source</li>
 <li>Use <code>show-source</code> to show the source of some method</li>
-</ul>
+</ol>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide0123" class="slide" data-transition="none">
-<div class="content " ref="intro/slide01:23">
+<div data-section="intro" data-title="slide01" id="intro_slide0123" class="slide smaller" data-transition="none">
+<div class="content smaller" ref="intro/slide01:23">
 <h1>Using show-doc to show the docs</h1>
 
 <p>Use <code>show-doc</code> do show the docs (requires gem <code>pry-doc</code>):</p>
@@ -777,8 +780,8 @@ pattern === element for every collection member.
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide0124" class="slide" data-transition="none">
-<div class="content " ref="intro/slide01:24">
+<div data-section="intro" data-title="slide01" id="intro_slide0124" class="slide small" data-transition="none">
+<div class="content small" ref="intro/slide01:24">
 <h1>To avoid printing a lot of stuff to stdout</h1>
 
 <p>Without <code>;</code> in the end</p>
@@ -793,9 +796,6 @@ pattern === element for every collection member.
    @busy_handler=nil,
    @collations={},
    @encoding=#&lt;Encoding:UTF-8&gt;,
-   @functions={},
-   @readonly=false,
-   @results_as_hash=true,
 #...</code></pre>
 
 <p>With <code>;</code> in the end</p>
@@ -806,8 +806,8 @@ pattern === element for every collection member.
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide0125" class="slide" data-transition="none">
-<div class="content " ref="intro/slide01:25">
+<div data-section="intro" data-title="slide01" id="intro_slide0125" class="slide small" data-transition="none">
+<div class="content small" ref="intro/slide01:25">
 <h1>Catching the last exception with <code>_ex_</code>
 </h1>
 
@@ -882,7 +882,7 @@ pry&gt; .pwd
 </div>
 <div data-section="intro" data-title="slide01" id="intro_slide0129" class="slide" data-transition="none">
 <div class="content " ref="intro/slide01:29">
-<h1>How to exit from a pry console correctly</h1>
+<h1>How to exit from a pry console</h1>
 
 <ul>
 <li>When using <code>ctrl+c</code>, it always <strong>CRASHES THE TERMINAL !!</strong>
@@ -897,9 +897,9 @@ pry&gt; .pwd
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="intro" data-title="slide01" id="intro_slide0130" class="slide center" data-transition="none">
-<div class="content center" ref="intro/slide01:30">
-<h1>Finish him!</h1>
+<div data-section="intro" data-title="slide01" id="intro_slide0130" class="slide small" data-transition="none">
+<div class="content small" ref="intro/slide01:30">
+<h1>Finish him! Questions??</h1>
 
 <h2>Pics</h2>
 
@@ -909,13 +909,13 @@ pry&gt; .pwd
 
 <p>How to find a subject to do a presentation: <a href="http://www.greaterthancode.com/2016/11/21/008-sandi-metz-and-katrina-owen/" target="_blank">http://www.greaterthancode.com/2016/11/21/008-sandi-metz-and-katrina-owen/</a></p>
 
-<h2>Questions ??</h2>
-
-<p>Fabio Perrella</p>
+<h2>Me</h2>
 
 <p><a href="https://github.com/fabioperrella" target="_blank">https://github.com/fabioperrella</a></p>
 
 <p><a href="http://twitter.com/fabioperrella" target="_blank">http://twitter.com/fabioperrella</a></p>
+
+<h2>Work at Locaweb</h2>
 
 <p><a href="https://www.locaweb.com.br/carreira" target="_blank">https://www.locaweb.com.br/carreira</a></p>
 </div>
