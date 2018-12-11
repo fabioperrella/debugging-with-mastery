@@ -17,3 +17,9 @@ To start the webserver, run:
 ```bash
 $ bundle exec showoff serve
 ```
+
+To publish the static version, run:
+
+```bash
+bundle exec showoff github
+```

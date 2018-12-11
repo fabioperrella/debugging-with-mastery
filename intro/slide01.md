@@ -58,17 +58,19 @@
 * bb (byebug)
   + https://github.com/fabioperrella/dotfiles/blob/master/sublime/byebug.sublime-snippet
 
-!SLIDE center subsection
+!SLIDE
 
 # Problem
 
 ## Taking control of the debugger!
 
-!SLIDE smallbullets center
+![](../_images/dog_leash.gif)
 
-# Case - Netflix fake recommendations app
+!SLIDE
 
-Understanding why the show "Vai Anita" is recommended to everybody!?!?!
+# Netflix fake recommendations app
+
+Understand why the show "Vai Anita" is recommended to everybody!?!?!
 
 https://github.com/fabioperrella/fake-netflix-recommendations
 
@@ -82,7 +84,7 @@ https://github.com/fabioperrella/fake-netflix-recommendations
 
 # Understanding the flow of execution to understand the `step(in)` command
 
-!SLIDE
+!SLIDE smaller
 
 # Code execution tree
 
@@ -144,17 +146,17 @@ I used the gem `tty-tree` to build it manually
 
 # Deep down in the code with byebug
 
-* Add a `binding.pry` in NETFLIX/app/services/user_recommendations.rb:3
-* Run test `spec/services/user_recommendations_spec.rb:49`
-* Use `play -l` to execute some block of code
-* Use `step` to deep down
-  * Unfortunately, there is no `step-back` command :(
-* Use `finish` to run the current frame until the end
-* Use `up` and `down` to know where in the stack I am, and inspect some variable
-* Use `next` to execute the line and go to the next line
-* Use `backtrace`, `frame` and `frame(n)` to show and change the current frame
+1. Add a `binding.pry` in `NETFLIX/app/services/user_recommendations.rb:3`
+2. Run test `spec/services/user_recommendations_spec.rb:49`
+3. Use `play -l` to execute some block of code
+4. Use `step` to deep down
+ * Unfortunately, there is no `step-back` command :(
+5. Use `finish` to run the current frame until the end
+6. Use `up` and `down` to know where in the stack I am, and inspect some variable
+7. Use `next` to execute the line and go to the next line
+8. Use `backtrace`, `frame` and `frame(n)` to show and change the current frame
 in another frame
-* Use `whereami` to show where the debugger is
+9. Use `whereami` to show where the debugger is
 
 !SLIDE center
 
@@ -162,7 +164,7 @@ in another frame
 
 ### If you have only 1 slot to learn something from this talk, save this!
 
-!SLIDE
+!SLIDE small
 
 # Another example in real life
 
@@ -186,9 +188,9 @@ the breakpoint.
 
 !SLIDE
 
-# Using the `play` command to help
+# Using the `play` command to run lines
 
-Good code:
+Good code (to play):
 
     @@@ ruby
     fetchers
@@ -201,7 +203,7 @@ Good code:
     # play -l 1..3
     # play -l 1..4
 
-Bad code:
+Bad code (to play):
 
     @@@ ruby
     fetchers.sort_by(&:order).map{ |fetcher| fetcher.fetch(user) }.inject(:+).reject { |item| watched_items.include?(item) }
@@ -225,7 +227,7 @@ Bad code:
 - Avoid using `step` to go into the block
 - Use `break [LINE]` and `continue` for the win!
 
-!SLIDE
+!SLIDE smaller
 
 # Debugging a code inside a loop
 
@@ -271,17 +273,17 @@ Bad code:
 
 # Using `pry` to browse source code regardless of a debug session
 
-* when debugging, the `pry` tools are available (with `pry-byebug`), but when
+1. when debugging, the `pry` tools are available (with `pry-byebug`), but when
 only in `pry` console, the debug commands are not available
-* Use `rails c` to enter the console
-* Use `cd` to inspect a class or instance
-* Use `nesting` to show where I am
-* Use `ls` to show the methods and variables
-* Use `ls --grep XX` to filter the result of `ls`
-* Use `show-source` (or `$`) to show the current source
-* Use `show-source` to show the source of some method
+2. Use `rails c` to enter the console
+3. Use `cd` to inspect a class or instance
+4. Use `nesting` to show where I am
+5. Use `ls` to show the methods and variables
+6. Use `ls --grep XX` to filter the result of `ls`
+7. Use `show-source` (or `$`) to show the current source
+8. Use `show-source` to show the source of some method
 
-!SLIDE
+!SLIDE smaller
 
 # Using show-doc to show the docs
 
@@ -314,7 +316,7 @@ Use `show-doc` do show the docs (requires gem `pry-doc`):
        [].all?                                           #=> true
 
 
-!SLIDE
+!SLIDE small
 
 # To avoid printing a lot of stuff to stdout
 
@@ -331,9 +333,6 @@ Without `;` in the end
        @busy_handler=nil,
        @collations={},
        @encoding=#<Encoding:UTF-8>,
-       @functions={},
-       @readonly=false,
-       @results_as_hash=true,
     #...
 
 With `;` in the end
@@ -343,7 +342,7 @@ With `;` in the end
     [13] pry(main)> conn.class
     => ActiveRecord::ConnectionAdapters::SQLite3Adapter
 
-!SLIDE
+!SLIDE small
 
 # Catching the last exception with `_ex_`
 
@@ -413,16 +412,16 @@ Use `.` (dot) and a command, example:
 
 !SLIDE
 
-# How to exit from a pry console correctly
+# How to exit from a pry console
 
 * When using `ctrl+c`, it always **CRASHES THE TERMINAL !!**
   * Use the command `reset` to restore the terminal
 * When using `exit`, it exits only the current context
 * When using `exit!`, it exists the console, no matter where you are
 
-!SLIDE center
+!SLIDE small
 
-# Finish him!
+# Finish him! Questions??
 
 ## Pics
 
@@ -432,12 +431,12 @@ This presentation was made with the gem **Showoff**: https://github.com/puppetla
 
 How to find a subject to do a presentation: http://www.greaterthancode.com/2016/11/21/008-sandi-metz-and-katrina-owen/
 
-## Questions ??
-
-Fabio Perrella
+## Me
 
 https://github.com/fabioperrella
 
 http://twitter.com/fabioperrella
+
+## Work at Locaweb
 
 https://www.locaweb.com.br/carreira
