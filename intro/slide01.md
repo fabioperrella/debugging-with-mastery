@@ -1,6 +1,6 @@
 !SLIDE center subsection
 
-# Debugging with mastery
+# Debugging with mastery in Ruby
 
 ## Fabio Perrella
 
