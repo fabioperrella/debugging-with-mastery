@@ -418,9 +418,11 @@ Use `.` (dot) and a command, example:
 * When using `exit`, it exits only the current context
 * When using `exit!`, it exists the console, no matter where you are
 
-!SLIDE small
+!SLIDE smaller
 
 # Finish him! Questions??
+
+I have a question!
 
 ## Pics
 

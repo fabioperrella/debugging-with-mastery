@@ -26,7 +26,6 @@ GEM
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     parslet (1.8.2)
-    pdfkit (0.8.2)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -73,17 +72,14 @@ GEM
       rack (>= 1, < 3)
     tilt (2.0.9)
     tty-tree (0.2.0)
-    wkhtmltopdf-binary (0.12.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  pdfkit
   pry-byebug
   showoff
   tty-tree
-  wkhtmltopdf-binary
 
 BUNDLED WITH
    1.17.1

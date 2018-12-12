@@ -23,8 +23,3 @@ To publish the static version, run:
 ```bash
 bundle exec showoff github
 ```
-
-To export to pdf:
-```
-bundle exec showoff pdf output.pdf
-```
