@@ -148,14 +148,13 @@ I used the gem `tty-tree` to build it manually
 
 1. Add a `binding.pry` in `NETFLIX/app/services/user_recommendations.rb:3`
 2. Run test `spec/services/user_recommendations_spec.rb:49`
-3. Use `play -l` to execute some block of code
-4. Use `step` to deep down
- * Unfortunately, there is no `step-back` command :(
+3. Use `step` to deep down
+4. Use `next` to execute the line and go to the next
+  * Unfortunately, there is no `step-back` command :(
 5. Use `finish` to run the current frame until the end
 6. Use `up` and `down` to know where in the stack I am, and inspect some variable
 7. Use `next` to execute the line and go to the next line
-8. Use `backtrace`, `frame` and `frame(n)` to show and change the current frame
-in another frame
+8. Use `backtrace` and `frame` to show the current frame
 9. Use `whereami` to show where the debugger is
 
 !SLIDE center
@@ -174,7 +173,7 @@ Using `up`, `down` and `frame` to understand what happened before it gets in
 the breakpoint.
 
     @@@ ruby
-    # PM/lib/recipes_manager/client.rb:6
+    # PM/lib/recipes_manager/client.rb:16
     class Client
       def post_bundle(bundle)
         binding.pry

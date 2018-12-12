@@ -584,8 +584,8 @@ tree = TTY::Tree.new do
 </li>
 <li>Run test <code>spec/services/user_recommendations_spec.rb:49</code>
 </li>
-<li>Use <code>play -l</code> to execute some block of code</li>
-<li>Use <code>step</code> to deep down
+<li>Use <code>step</code> to deep down</li>
+<li>Use <code>next</code> to execute the line and go to the next
 
 <ul>
 <li>Unfortunately, there is no <code>step-back</code> command :(</li>
@@ -594,8 +594,7 @@ tree = TTY::Tree.new do
 <li>Use <code>finish</code> to run the current frame until the end</li>
 <li>Use <code>up</code> and <code>down</code> to know where in the stack I am, and inspect some variable</li>
 <li>Use <code>next</code> to execute the line and go to the next line</li>
-<li>Use <code>backtrace</code>, <code>frame</code> and <code>frame(n)</code> to show and change the current frame
-in another frame</li>
+<li>Use <code>backtrace</code> and <code>frame</code> to show the current frame</li>
 <li>Use <code>whereami</code> to show where the debugger is</li>
 </ol>
 </div>
@@ -618,7 +617,7 @@ in another frame</li>
 <p>Using <code>up</code>, <code>down</code> and <code>frame</code> to understand what happened before it gets in
 the breakpoint.</p>
 
-<pre class="highlight"><code class="language-ruby"># PM/lib/recipes_manager/client.rb:6
+<pre class="highlight"><code class="language-ruby"># PM/lib/recipes_manager/client.rb:16
 class Client
   def post_bundle(bundle)
     binding.pry
