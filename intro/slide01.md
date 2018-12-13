@@ -32,7 +32,7 @@
 - byebug
   + "new" debugger (after ruby 2.0.0)
 - pry-byebug
- + pry + byebug (but byebug alone has some advantages!)
+ + pry + byebug
 
 !SLIDE smallbullets
 
@@ -82,7 +82,7 @@ https://github.com/fabioperrella/fake-netflix-recommendations
 
 !SLIDE center
 
-# Understanding the flow of execution to understand the `step(in)` command
+# Understand the flow of execution to understand the commands `step` and `next`
 
 !SLIDE smaller
 
@@ -281,6 +281,7 @@ only in `pry` console, the debug commands are not available
 6. Use `ls --grep XX` to filter the result of `ls`
 7. Use `show-source` (or `$`) to show the current source
 8. Use `show-source` to show the source of some method
+9. Use `edit` to edit any code
 
 !SLIDE smaller
 
@@ -418,21 +419,27 @@ Use `.` (dot) and a command, example:
 * When using `exit`, it exits only the current context
 * When using `exit!`, it exists the console, no matter where you are
 
-!SLIDE smaller
+!SLIDE
 
 # Finish him! Questions??
 
 I have a question!
 
-## Pics
+## Picks
+
+Pry wiki: https://github.com/pry/pry/wiki
+
+Gem **Showoff**: https://github.com/puppetlabs/showoff
 
 The source of this presentation: https://github.com/fabioperrella/debugging-with-mastery
 
-This presentation was made with the gem **Showoff**: https://github.com/puppetlabs/showoff
-
 How to find a subject to do a presentation: http://www.greaterthancode.com/2016/11/21/008-sandi-metz-and-katrina-owen/
 
+!SLIDE
+
 ## Me
+
+![](../_images/fabio_perrella_bateria.jpg)
 
 https://github.com/fabioperrella
 
